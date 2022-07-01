@@ -6,21 +6,11 @@
 /*   By: adinari <adinari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 17:28:27 by adinari           #+#    #+#             */
-/*   Updated: 2022/06/30 00:05:15 by adinari          ###   ########.fr       */
+/*   Updated: 2022/07/01 09:47:05 by adinari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "push_swap.h"
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdio.h>
-# include <string.h>
-
-typedef struct s_stack
-{
-	int 			value;
-	struct s_stack 	*next;
-} 				t_stack;
+#include "push_swap.h"
 
 int	pop(t_stack *pop_stack)
 {
@@ -264,10 +254,6 @@ void	printer(t_stack *ab)
 	printf("\n");
 	
 }
-
-int	ft_isdigit(int c);
-
-int	ft_atoi(const char *str);
 
 int	main(int argc, char **argv)
 {
