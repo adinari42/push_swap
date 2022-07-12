@@ -6,7 +6,7 @@
 /*   By: adinari <adinari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 09:59:30 by adinari           #+#    #+#             */
-/*   Updated: 2022/07/01 10:01:04 by adinari          ###   ########.fr       */
+/*   Updated: 2022/07/06 01:45:00 by adinari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ void	pb(t_stack **a, t_stack **b)
 	temp->next = *b;//temp becomes top of b by addressing next to b
 	*b = temp;//b takes shape/structure of temp llist
 	write(1, "pb\n", 3);
+	// printer(*a);
+	// printer(*b);
+	
 }
 
 void	pa(t_stack **b, t_stack **a)

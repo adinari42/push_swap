@@ -6,7 +6,7 @@
 /*   By: adinari <adinari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 17:28:27 by adinari           #+#    #+#             */
-/*   Updated: 2022/07/01 10:12:08 by adinari          ###   ########.fr       */
+/*   Updated: 2022/07/12 22:05:09 by adinari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	pop(t_stack *pop_stack)
 	free(tmp);
 	return (result);
 }
+
 /*push argument value as a new node on top of stack a*/
 int	push(t_stack **thestack, int thevalue)
 {
@@ -31,7 +32,10 @@ int	push(t_stack **thestack, int thevalue)
 	temp = NULL;
 	newnode = malloc(sizeof(t_stack));
 	if (newnode == NULL)
+	{
+		write(1, "Error\n", 6);
 		return (0);
+	}
 	newnode->value = thevalue;
 	newnode->next = NULL;
 	if (*thestack == NULL)
@@ -113,14 +117,39 @@ int	main(int argc, char **argv)
 	b = NULL;
 	int	i;
 	int p;
+	// int errortest;
 
 	i = 1;
 	p = 0;
+	// errortest = fill_ll(*argv, &a);
+	// *value = ft_atoi(*argv);
+	if (2 > argc)
+		return (0);
+	//if (fill_ll(*argv, &a))
+		//return (write(1, "Error\n", 6));
+	
 	while (i < argc)
 	{
-		push(&a, ft_atoi(*(argv + i)));
-		i++;
+		fill_ll(*(argv + i), &a);
+	 	i++;
 	}
+	if (dup_check(&a))
+		return (1);	
+	if (sort_check(&a))
+		return (1);
+	sort_alg(&a, &b);
+
+	printf("A-> ");
+	printer(a);
+	printf("B-> ");
+	printer(b);
+	
+	/*printf("A-> ");
+	printer(a);
+	printf("B-> ");
+	printer(b);*/
+
+	/*
 	printf("A-> ");
 	printer(a);
 	printf("B-> ");
@@ -182,5 +211,5 @@ int	main(int argc, char **argv)
 	printer(a);
 	printf("B-> ");
 	printer(b);
-
+*/
 }

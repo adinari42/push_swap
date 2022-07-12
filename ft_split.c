@@ -6,17 +6,17 @@
 /*   By: adinari <adinari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 23:36:44 by adinari           #+#    #+#             */
-/*   Updated: 2022/04/19 01:23:31 by adinari          ###   ########.fr       */
+/*   Updated: 2022/07/10 20:59:49 by adinari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 /*str_count returns n number of total strings splitted by c
 str_radius returns i the length of the current string to use it in str_fill
 str_fill fills s1 with i bits from s + i in s1
 free_all frees n strings from the double pointer after failure
 */
-static int	str_count(char const *s, char c)
+int	str_count(char const *s, char c)
 {
 	size_t	i;
 	int		n;
@@ -35,7 +35,7 @@ static int	str_count(char const *s, char c)
 	return (n);
 }
 
-static size_t	str_radius(const char *s, char c)
+size_t	str_radius(const char *s, char c)
 {
 	size_t	i;
 
@@ -45,7 +45,7 @@ static size_t	str_radius(const char *s, char c)
 	return (i);
 }
 
-static int	str_fill(char **s1, const char *s, char c)
+int	str_fill(char **s1, const char *s, char c)
 {
 	size_t	j;
 	size_t	i;
@@ -70,7 +70,7 @@ static int	str_fill(char **s1, const char *s, char c)
 	return (1);
 }
 
-static void	free_all(char **words, int n)
+void	free_all(char **words, int n)
 {
 	while (n-- > 0)
 		free(words[n]);
