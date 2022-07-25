@@ -6,7 +6,7 @@
 /*   By: adinari <adinari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 09:59:30 by adinari           #+#    #+#             */
-/*   Updated: 2022/07/06 01:45:00 by adinari          ###   ########.fr       */
+/*   Updated: 2022/07/25 00:34:39 by adinari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,27 @@ void	pb(t_stack **a, t_stack **b)
 	temp->next = *b;//temp becomes top of b by addressing next to b
 	*b = temp;//b takes shape/structure of temp llist
 	write(1, "pb\n", 3);
+	// printf("\na :");
 	// printer(*a);
-	// printer(*b);
-	
+	// printf("\nb :");
+	// printer(*b);	
 }
 
 void	pa(t_stack **b, t_stack **a)
 {
 	t_stack	*temp;
 
-	temp = *b;//make copy of b in temp
-	*b = (*b)->next;//remove top of b by giving it the adress of the next second node
-	temp->next = *a;//temp becomes top of a by addressing next to a
-	*a = temp;//a takes shape/structure of temp llist
+	temp = *b;//make copy of a in temp
+	*b = (*b)->next;//remove top of a by giving it the adress of the next second node
+	temp->next = *a;//temp becomes top of b by addressing next to b
+	*a = temp;//b takes shape/structure of temp llist
 	write(1, "pa\n", 3);
+	// printf("\na :");
+	// printer(*a);
+	// printf("\nb :");
+	// printer(*b);
 }
+
 void	sa(t_stack **a)
 {
 	t_stack	*temp1;
@@ -138,7 +144,7 @@ void	rra(t_stack **a)
 	}
 	ft_lstadd_back(&temp2, *a);
 	*a = temp2;
-	write(1, "rra\n", 3);
+	write(1, "rra\n", 4);
 }
 void	rrb(t_stack **b)
 {
@@ -162,5 +168,5 @@ void	rrb(t_stack **b)
 	}
 	ft_lstadd_back(&temp2, *b);
 	*b = temp2;
-	write(1, "rrb\n", 3);
+	write(1, "rrb\n", 4);
 }

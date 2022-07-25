@@ -6,7 +6,7 @@
 /*   By: adinari <adinari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 17:28:27 by adinari           #+#    #+#             */
-/*   Updated: 2022/07/12 22:05:09 by adinari          ###   ########.fr       */
+/*   Updated: 2022/07/25 03:40:54 by adinari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	ft_lstadd_front(t_stack **lst, t_stack *new)
 	new->next = *lst;
 	*lst = new;
 }
-
+/*prints current state of linked list*/
 void	printer(t_stack *ab)
 {
 	t_stack *aa;
@@ -101,7 +101,9 @@ void	printer(t_stack *ab)
 	}
 	while (aa != NULL)
 	{
-		printf("[value]->[%d]  ", aa->value);
+		// printf("[value]->[%d][%d]  ", aa->value, aa->index);
+		//printf("[%d]~%d  ", aa->value, aa->index);
+		printf(" [%d]~%d ", aa->value, aa->index);
 		aa = aa->next;
 	}
 	printf("\n");
@@ -117,99 +119,53 @@ int	main(int argc, char **argv)
 	b = NULL;
 	int	i;
 	int p;
-	// int errortest;
 
 	i = 1;
 	p = 0;
-	// errortest = fill_ll(*argv, &a);
-	// *value = ft_atoi(*argv);
+
 	if (2 > argc)
 		return (0);
-	//if (fill_ll(*argv, &a))
-		//return (write(1, "Error\n", 6));
-	
 	while (i < argc)
 	{
 		fill_ll(*(argv + i), &a);
 	 	i++;
 	}
+	int h = total_indxcount(&a);
+	// printf("A-> ");
+	// printer(a);
+	// printf("B-> ");
+	// printer(b);
 	if (dup_check(&a))
 		return (1);	
 	if (sort_check(&a))
 		return (1);
-	sort_alg(&a, &b);
+	//sort_alg(&a, &b);
+	// manage_chunks(&a, &b);
+	//secondsort_phase(&a, &b);
+	
+	// b = sorted_list(a);
+	lst_index(a, sorted_list(a));
+	push_tchunk2(&a, &b);
+	// 	printf("\n-----------------------------\n\nA-> ");
+	// printer(a);
+	// printf("B-> ");
+	// printer(b);
+	order_3(&a);
+	// printf("\n-----------------------------\n\nA-> ");
+	// printer(a);
+	// printf("B-> ");
+	// printer(b);
+	push_back(&a, &b);
 
-	printf("A-> ");
-	printer(a);
-	printf("B-> ");
-	printer(b);
+	// printf("\n-----------------------------\n\nA-> ");
+	// printer(a);
+	// printf("B-> ");
+	// printer(b);
+	
+	// printf("----------%d---------", h);
 	
 	/*printf("A-> ");
 	printer(a);
 	printf("B-> ");
 	printer(b);*/
-
-	/*
-	printf("A-> ");
-	printer(a);
-	printf("B-> ");
-	printer(b);
-	pb(&a, &b);
-	pb(&a, &b);
-	pb(&a, &b);
-	printf("A-> ");
-	printer(a);
-	printf("B-> ");
-	printer(b);
-	sb(&b);
-	printf("A-> ");
-	printer(a);
-	printf("B-> ");
-	printer(b);
-	pa(&b, &a);
-	printf("A-> ");
-	printer(a);
-	printf("B-> ");
-	printer(b);
-	sa(&a);
-	printf("A-> ");
-	printer(a);
-	printf("B-> ");
-	printer(b);
-	pb(&a, &b);
-	printf("A-> ");
-	printer(a);
-	printf("B-> ");
-	printer(b);
-	ss(&a, &b);
-	printf("A-> ");
-	printer(a);
-	printf("B-> ");
-	printer(b);
-	ra(&a);
-	printf("A-> ");
-	printer(a);
-	printf("B-> ");
-	printer(b);
-	rb(&b);
-	printf("A-> ");
-	printer(a);
-	printf("B-> ");
-	printer(b);
-	rr(&a, &b);
-	printf("A-> ");
-	printer(a);
-	printf("B-> ");
-	printer(b);
-	rrb(&b);
-	printf("\nA-> ");
-	printer(a);
-	printf("B-> ");
-	printer(b);
-	rra(&a);
-	printf("\nA-> ");
-	printer(a);
-	printf("B-> ");
-	printer(b);
-*/
 }

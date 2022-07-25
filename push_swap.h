@@ -6,7 +6,7 @@
 /*   By: adinari <adinari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 09:45:11 by adinari           #+#    #+#             */
-/*   Updated: 2022/07/10 20:59:58 by adinari          ###   ########.fr       */
+/*   Updated: 2022/07/23 02:03:43 by adinari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,14 @@ typedef struct s_stack
 {
 	int 			value;
 	struct s_stack 	*next;
+	int				index;
 } 				t_stack;
 
 int	ft_isdigit(int c);
 
 int	ft_atoi(const char *str);
+
+void ft_error(int i);
 
 void	printer(t_stack *ab);
 /*sorting_funct.c*/
@@ -47,7 +50,12 @@ t_stack	*ft_lstlast(t_stack *lst);
 void	ft_lstadd_back(t_stack **lst, t_stack *new);
 void	ft_lstadd_front(t_stack **lst, t_stack *new);
 /*sorting*/
+int		total_indxcount(t_stack **a);
 void	sort_alg(t_stack **a, t_stack **b);
+void manage_chunks(t_stack **a, t_stack **b);
+t_stack *define_maxchunk(t_stack **a);
+t_stack *define_minchunk(t_stack **a);
+
 /*utils.c ==== ft_substr*/
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strdup(const char *s1);
@@ -62,10 +70,24 @@ char	*ft_strdup(const char *s1);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 int		ft_strlen(const char *s);
 /*split.c*/
-char			**ft_split(char const *s, char c);
-void		free_all(char **words, int n);
+char	**ft_split(char const *s, char c);
+void	free_all(char **words, int n);
 int		str_fill(char **s1, const char *s, char c);
 size_t	str_radius(const char *s, char c);
 int		str_count(char const *s, char c);
+/*second_sortphase*/
+void	secondsort_phase(t_stack **a, t_stack **b);
+
+
+
+
+
+
+t_stack *sorted_list(t_stack *sort);
+ void	lst_index(t_stack *lst, t_stack *sort);
+ void	push_tchunk(t_stack **a, t_stack **b);
+ void	push_tchunk2(t_stack **a, t_stack **b);
+ void	push_back(t_stack **a, t_stack **b);
+void	order_3(t_stack **a);
 
 #endif
