@@ -6,7 +6,7 @@
 /*   By: adinari <adinari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 17:28:27 by adinari           #+#    #+#             */
-/*   Updated: 2022/07/25 03:40:54 by adinari          ###   ########.fr       */
+/*   Updated: 2022/07/28 06:16:26 by adinari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,10 @@ int	main(int argc, char **argv)
 		return (0);
 	while (i < argc)
 	{
-		fill_ll(*(argv + i), &a);
+		if (fill_ll(*(argv + i), &a)) {
+			printf("Error");
+			return 1;
+		}
 	 	i++;
 	}
 	int h = total_indxcount(&a);
@@ -139,33 +142,26 @@ int	main(int argc, char **argv)
 		return (1);	
 	if (sort_check(&a))
 		return (1);
-	//sort_alg(&a, &b);
-	// manage_chunks(&a, &b);
-	//secondsort_phase(&a, &b);
-	
-	// b = sorted_list(a);
+
 	lst_index(a, sorted_list(a));
 	push_tchunk2(&a, &b);
-	// 	printf("\n-----------------------------\n\nA-> ");
+	
+	// printf("\n-------------post push chunks----------------\n\nA-> ");
 	// printer(a);
 	// printf("B-> ");
 	// printer(b);
+	
 	order_3(&a);
-	// printf("\n-----------------------------\n\nA-> ");
+
+	// printf("\n-------------post order 3---------------\n\nA-> ");
 	// printer(a);
 	// printf("B-> ");
 	// printer(b);
+	
 	push_back(&a, &b);
 
-	// printf("\n-----------------------------\n\nA-> ");
+	// printf("\n-------------final result----------------\n\nA-> ");
 	// printer(a);
 	// printf("B-> ");
 	// printer(b);
-	
-	// printf("----------%d---------", h);
-	
-	/*printf("A-> ");
-	printer(a);
-	printf("B-> ");
-	printer(b);*/
 }

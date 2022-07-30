@@ -6,7 +6,7 @@
 /*   By: adinari <adinari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 09:59:30 by adinari           #+#    #+#             */
-/*   Updated: 2022/07/25 00:34:39 by adinari          ###   ########.fr       */
+/*   Updated: 2022/07/25 08:45:34 by adinari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,30 @@ void	ra(t_stack **a)
 	}
 	write(1, "ra\n", 3);
 }
+void	rotate(t_stack **a, int flag)
+{
+	t_stack	*temp;
+	t_stack *temp2;
+
+	temp = (*a)->next;
+	(*a)->next = NULL;
+	if (temp == NULL)
+		temp = *a;
+	else
+	{
+		temp2 = temp;
+		while (temp2->next != NULL)
+			temp2 = temp2->next;
+		temp2->next = *a;
+		*a = temp;
+	}
+	if (flag == 1)
+		write(1, "rra\n", 4);
+	else if (flag == 2)
+		write(1, "rrb\n", 4);
+	else
+		return;
+}
 void	rb(t_stack **b)
 {
 	t_stack	*temp1;
@@ -145,6 +169,35 @@ void	rra(t_stack **a)
 	ft_lstadd_back(&temp2, *a);
 	*a = temp2;
 	write(1, "rra\n", 4);
+}
+void	rrotate(t_stack **a, int flag)
+{
+	t_stack	*temp1;
+	t_stack *temp2;
+
+	if ((*a)->next == NULL)
+		return ;
+	temp1 = ft_lstlast(*a);
+	temp2 = gener_node(temp1->value);
+	temp1 = *a;
+	while(temp1->next != NULL)
+	{	
+		if (temp1->next->next == NULL)//checking last node
+		{
+			free(temp1->next);//free before last node
+			temp1->next = NULL;//set current node next to null to make it last node
+		}
+		else
+			temp1 = temp1->next;
+	}
+	ft_lstadd_back(&temp2, *a);
+	*a = temp2;
+	if (flag == 1)
+		write(1, "rra\n", 4);
+	else if (flag == 2)
+		write(1, "rrb\n", 4);
+	else
+		return;
 }
 void	rrb(t_stack **b)
 {
