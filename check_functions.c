@@ -6,7 +6,7 @@
 /*   By: adinari <adinari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 23:13:17 by adinari           #+#    #+#             */
-/*   Updated: 2022/07/28 06:16:17 by adinari          ###   ########.fr       */
+/*   Updated: 2022/07/31 14:43:18 by adinari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,27 @@ void ft_error(int i)
 	exit (1);
 }
 
+int	minmax_intcheck(const char *str, int sign, long *result)
+{
+	int i;
+
+	i = 0;
+	while (ft_isdigit(str[i]))
+	{
+		*result = (*result * 10) + (str[i++] - '0');
+		if (*result > 2147483647 && sign == 1)
+			return (0);
+		if (*result > 2147483648 && sign == -1)
+			return (0);
+	}
+	return (1);
+}
+
 int	ft_atoi(const char *str, long *result)
 {
 	int		sign;
 	int		i;
+	int		t;
 
 	*result = 0;
 	sign = 1;
@@ -40,18 +57,13 @@ int	ft_atoi(const char *str, long *result)
 	if (str[i] == '-' || str[i] == '+')
 		i++;
 	if (str[i] < '0' || str[i] > '9')
-			return -1;
-	while (ft_isdigit(str[i]))
-	{
-		*result = (*result * 10) + (str[i++] - '0');
-		if (*result > 2147483647 && sign == 1)
 			return (-1);
-		if (*result > 2147483648 && sign == -1)
-			return (-1);
-	}
+	t = minmax_intcheck(str, sign, result);
+	if (!t)
+		return (-1);
 	if (!ft_isdigit(str[i]) && str[i])
 	{
-		return 1;
+		return (1);
 		ft_error(i);
 	}
 	*result *= sign;
@@ -64,30 +76,4 @@ int	ft_isdigit(int c)
 		return (c);
 	else
 		return (0);
-}
-
-int	ft_atoi_check(const char *str)
-{
-	long	val;
-	int		sign;
-	int		i;
-
-	val = 0;
-	sign = 1;
-	i = 0;
-	while ((str[i] >= '\t' && str[i] <= '\r') || str[i] == ' ')
-		i++;
-	if (str[i] == '-')
-		sign = -1;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	while (ft_isdigit(str[i]))
-	{
-		val = (val * 10) + (str[i++] - '0');
-		if (val > 2147483647 && sign == 1)
-			return (-1);
-		if (val > 2147483648 && sign == -1)
-			return (0);
-	}
-	return (val * sign);
 }

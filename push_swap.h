@@ -6,7 +6,7 @@
 /*   By: adinari <adinari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 09:45:11 by adinari           #+#    #+#             */
-/*   Updated: 2022/07/30 03:00:43 by adinari          ###   ########.fr       */
+/*   Updated: 2022/07/31 15:56:03 by adinari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,30 +26,27 @@ typedef struct s_stack
 } 				t_stack;
 
 t_stack *tmp;
-int		i;
 
 int	ft_isdigit(int c);
-
 int	ft_atoi(const char *str, long *n);
-
 void ft_error(int i);
-
 void	printer(t_stack *ab);
 /*sorting_funct.c*/
 void	pb(t_stack **a, t_stack **b);
-void	pa(t_stack **b, t_stack **a);
-void	sa(t_stack **a);
 void	sb(t_stack **b);
 void	ss(t_stack **a, t_stack **b);
-void	ra(t_stack **a);
 void	rb(t_stack **b);
-void	rr(t_stack **a, t_stack **b);
-void	rra(t_stack **a);
 void	rrb(t_stack **b);
-void	rotate(t_stack **a, int flag);
-void	rrotate(t_stack **a, int flag);
+/*sorting_funct2.c*/
+void	pa(t_stack **b, t_stack **a);
+void	sa(t_stack **a);
+void	ra(t_stack **a);
+void	rra(t_stack **a);
+void	rr(t_stack **a, t_stack **b);
 /*pushswap.c*/
 int		push(t_stack **thestack, int thevalue);
+/*llist_ctrl.c*/
+int	push(t_stack **thestack, int thevalue);
 t_stack	*gener_node(int thevalue);
 t_stack	*ft_lstlast(t_stack *lst);
 void	ft_lstadd_back(t_stack **lst, t_stack *new);
@@ -75,11 +72,27 @@ void	free_all(char **words, int n);
 int		str_fill(char **s1, const char *s, char c);
 size_t	str_radius(const char *s, char c);
 int		str_count(char const *s, char c);
-/*extra(sorting algorithm)*/
+/*extra.c*/
 t_stack *sorted_list(t_stack *sort);
 void	lst_index(t_stack *lst, t_stack *sort);
-void	push_tchunk2(t_stack **a, t_stack **b);
+int		chunk_number(t_stack *a);
+int		chunk_sizer(t_stack **a);
+int		total_indxcount(t_stack **a);
+/*push_chunk.c*/
+void	push_chunk(t_stack **a, t_stack **b);
+void	pushrotate(t_stack **a, t_stack **b);
+void	rotate_direction(t_stack **a, int chunk_border);
+int		first_occurance(t_stack **a, int chunk_border);
+int		last_occurance(t_stack **a, int chunk_border);
+/*push_back.c*/
 void	push_back(t_stack **a, t_stack **b);
+int		update_rotation(t_stack **b);
+/*sorted_list.c*/
+t_stack	*sorted_list(t_stack *sort);
+void	lst_index(t_stack *lst, t_stack *sort);
+t_stack	*lst_dup(t_stack *lst);
+void	swap(int *a, int *b);
+/**/
 void	order_3(t_stack **a);
 
 #endif
