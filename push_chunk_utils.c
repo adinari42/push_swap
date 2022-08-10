@@ -6,32 +6,28 @@
 /*   By: adinari <adinari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 11:37:07 by adinari           #+#    #+#             */
-/*   Updated: 2022/08/10 10:25:34 by adinari          ###   ########.fr       */
+/*   Updated: 2022/08/10 10:53:03 by adinari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	handle_pushrotate(t_stack **a, t_stack **b, int chunk_size, int chunk_border)
+void	handle_pushrotate(t_stack **a, t_stack **b, int chunk_s, int chunk_b)
 {
 	int		n;
-	// int		chunk_border;
 	int		i;
 
 	i = 0;
 	n = total_indxcount(a) - 3;
-	// chunk_border = (total_indxcount(a) - 1) / chunk_number(*a);
-	// printf(" %d chunk border", chunk_border);
-	// return ;
-	while (i < chunk_size && total_indxcount(a) > 3)
+	while (i < chunk_s && total_indxcount(a) > 3)
 	{
-		if ((*a)->index < n && (*a)->index <= chunk_border)
+		if ((*a)->index < n && (*a)->index <= chunk_b)
 		{
 			i++;
 			pushrotate(a, b);
 		}
 		else if (total_indxcount(a) > 3)
-			rotate_direction(a, chunk_border);
+			rotate_direction(a, chunk_b);
 		else
 			break ;
 	}

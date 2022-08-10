@@ -6,7 +6,7 @@
 /*   By: adinari <adinari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 11:48:01 by adinari           #+#    #+#             */
-/*   Updated: 2022/08/10 10:32:08 by adinari          ###   ########.fr       */
+/*   Updated: 2022/08/10 10:53:31 by adinari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,17 +76,13 @@ void	push_chunk(t_stack **a, t_stack **b)
 	t_stack	*buffer;
 	int		chunk_border;
 
-	chunk_border = (total_indxcount(a) - 1) / chunk_number(*a);//
+	chunk_border = (total_indxcount(a) - 1) / chunk_number(*a);
 	chunk_size = total_indxcount(a) / chunk_number(*a);
-	// printf("%d  ", chunk_size);
-	// printf("%d  ", total_indxcount(a));
-	// printf("%d  \n", chunk_number(*a));
 	while (total_indxcount(a) > 3)
 	{
 		buffer = sorted_list(*a);
 		lst_index(*a, buffer);
 		free_ll(buffer);
 		handle_pushrotate(a, b, chunk_size, chunk_border);
-		// chunk_border += chunk_size;
 	}
 }

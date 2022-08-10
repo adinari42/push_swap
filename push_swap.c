@@ -6,30 +6,29 @@
 /*   By: adinari <adinari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 17:28:27 by adinari           #+#    #+#             */
-/*   Updated: 2022/08/10 10:27:06 by adinari          ###   ########.fr       */
+/*   Updated: 2022/08/10 10:51:13 by adinari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	printer(t_stack *ab)
-{
-	t_stack	*aa;
+// void	printer(t_stack *ab)
+// {
+// 	t_stack	*aa;
 
-	aa = ab;
-	if (aa == NULL)
-	{
-		printf("\n");
-		return ;
-	}
-	while (aa != NULL)
-	{
-		printf(" [%d]~%d ", aa->value, aa->index);
-		aa = aa->next;
-	}
-	printf("\n");
-}
-
+// 	aa = ab;
+// 	if (aa == NULL)
+// 	{
+// 		printf("\n");
+// 		return ;
+// 	}
+// 	while (aa != NULL)
+// 	{
+// 		printf(" [%d]~%d ", aa->value, aa->index);
+// 		aa = aa->next;
+// 	}
+// 	printf("\n");
+// }
 void	push_swap(t_stack *a, t_stack *b)
 {
 	t_stack	*sorted_l;
@@ -40,7 +39,6 @@ void	push_swap(t_stack *a, t_stack *b)
 	push_chunk(&a, &b);
 	order(&a);
 	push_back(&a, &b);
-	// printer(a);
 	free_ll(a);
 }
 
@@ -70,6 +68,5 @@ int	main(int argc, char **argv)
 	if (sort_check(&a))
 		return (1);
 	push_swap(a, b);
-	// system("leaks push_swap");
 	return (0);
 }
