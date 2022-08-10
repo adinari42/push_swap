@@ -6,11 +6,11 @@
 /*   By: adinari <adinari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 13:45:41 by adinari           #+#    #+#             */
-/*   Updated: 2022/08/08 19:19:50 by adinari          ###   ########.fr       */
+/*   Updated: 2022/08/10 04:30:47 by adinari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 int	dup_check(t_stack **a)
 {
@@ -43,11 +43,15 @@ int	sort_check(t_stack **a)
 	while (tmp->next != NULL)
 	{
 		if (tmp->value > tmp1->value)
+		{
+			// free_ll(*a);
 			return (0);
+		}
 		tmp = tmp->next;
 		tmp1 = tmp->next;
 	}
-	exit (0);
+	// free_ll(*a);
+	return (1);
 }
 
 void	free_ll(t_stack *stack)
@@ -105,3 +109,4 @@ int	fill_ll(char *argv, t_stack **a)
 	free_all(split_int, j);
 	return (0);
 }
+

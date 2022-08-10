@@ -6,7 +6,7 @@
 /*   By: adinari <adinari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 20:17:02 by adinari           #+#    #+#             */
-/*   Updated: 2022/07/31 16:04:10 by adinari          ###   ########.fr       */
+/*   Updated: 2022/08/03 21:17:40 by adinari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,22 @@ void	order_3(t_stack **a)
 	tmp1 = (*a)->value;
 	tmp2 = (*a)->next->value;
 	tmp3 = (*a)->next->next->value;
-	if (tmp1 < tmp2 && tmp1 < tmp3 && tmp2 > tmp1)
+	if (tmp1 < tmp2 && tmp1 < tmp3 && tmp2 > tmp3)
 	{
-		rra(a);
-		sa(a);
+		rra(a, "print");
+		sa(a, "print");
 	}
 	else if (tmp1 > tmp2 && tmp1 < tmp3 && tmp2 < tmp3)
-		sa(a);
+		sa(a, "print");
 	else if (tmp1 < tmp2 && tmp1 > tmp3 && tmp2 > tmp3)
-		rra(a);
+		rra(a, "print");
 	else if (tmp1 > tmp2 && tmp1 > tmp3 && tmp2 > tmp3)
 	{
-		ra(a);
-		sa(a);
+		ra(a, "print");
+		sa(a, "print");
 	}
 	else if (tmp1 > tmp2 && tmp1 > tmp3 && tmp2 < tmp3)
-		ra(a);
+		ra(a, "print");
 	else
 		return ;
 }

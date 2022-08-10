@@ -6,11 +6,11 @@
 /*   By: adinari <adinari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 23:36:44 by adinari           #+#    #+#             */
-/*   Updated: 2022/08/04 19:47:29 by adinari          ###   ########.fr       */
+/*   Updated: 2022/08/03 14:14:48 by adinari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 /*str_count returns n number of total strings splitted by c
 str_radius returns i the length of the current string to use it in str_fill
 str_fill fills s1 with i bits from s + i in s1
@@ -86,7 +86,6 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	n = str_count(s, c);
 	multistr = (char **)malloc(sizeof(char *) * (n + 1));
-	multistr[n] = NULL;
 	if (!multistr)
 		return (NULL);
 	if (!str_fill(multistr, s, c))
@@ -94,5 +93,6 @@ char	**ft_split(char const *s, char c)
 		free_all(multistr, n);
 		return (NULL);
 	}
+	multistr[n] = NULL;
 	return (multistr);
 }

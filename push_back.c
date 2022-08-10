@@ -6,7 +6,7 @@
 /*   By: adinari <adinari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 11:48:01 by adinari           #+#    #+#             */
-/*   Updated: 2022/07/31 11:53:13 by adinari          ###   ########.fr       */
+/*   Updated: 2022/08/03 21:18:11 by adinari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ void	push_back(t_stack **a, t_stack **b)
 		else if (rotation > (total_indxcount(b) / 2) + 1)
 		{
 			while (i++ < n - rotation)
-				rrb(b);
+				rrb(b, "print");
 			pa(b, a);
 		}
 		else
 		{
 			while (i++ < rotation)
-				rb(b);
+				rb(b, "print");
 			pa(b, a);
 		}
 	}

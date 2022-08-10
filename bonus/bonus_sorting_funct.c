@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sorting_funct.c                                    :+:      :+:    :+:   */
+/*   bonus_sorting_funct.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adinari <adinari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 09:59:30 by adinari           #+#    #+#             */
-/*   Updated: 2022/08/10 04:20:32 by adinari          ###   ########.fr       */
+/*   Updated: 2022/08/10 04:18:09 by adinari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 /*
 //make copy of a in temp
 //remove top of a by giving it the adress of the next second node
 //temp becomes top of b by addressing next to b
 //b takes shape/structure of temp llist
 */
-void	pb(t_stack **a, t_stack **b)
+void	silent_pb(t_stack **a, t_stack **b)
 {
 	t_stack	*temp;
 
@@ -25,14 +25,15 @@ void	pb(t_stack **a, t_stack **b)
 	*a = (*a)->next;
 	temp->next = *b;
 	*b = temp;
-	write(1, "pb\n", 3);
 }
 
-void	sb(t_stack **b, char *str)
+void	silent_sb(t_stack **b)
 {
 	t_stack	*temp1;
-	t_stack	*temp2;
+	t_stack *temp2;
 
+	if ((*b) == NULL)
+		return ;
 	temp1 = *b;
 	*b = (*b)->next;
 	temp2 = *b;
@@ -40,27 +41,28 @@ void	sb(t_stack **b, char *str)
 	temp1->next = *b;
 	temp2->next = temp1;
 	*b = temp2;
-	if (ft_strncmp(str, "print", 5) == 0)
-		write(1, "sb\n", 3);
 }
 
-void	ss(t_stack **a, t_stack **b)
+void	silent_ss(t_stack **a, t_stack **b)
 {
-	if (total_indxcount(b) < 2)
-		sa(a, "not print");
-	else if (total_indxcount(a) < 2)
-		sb(b, "not print");
+	if ((*b) == NULL || (*b)->next == NULL)
+		silent_sa(a);
+	else if ((*a) == NULL || (*a)->next == NULL)
+		silent_sb(b);
 	else
-		sa(a, "not print");
-		sb(b, "not print");
-	write(1, "ss\n", 3);
+	{
+		silent_sa(a);
+		silent_sb(b);
+	}
 }
 
-void	rb(t_stack **b, char *str)
+void	silent_rb(t_stack **b)
 {
 	t_stack	*temp1;
-	t_stack	*temp2;
+	t_stack *temp2;
 
+	if ((*b) == NULL)
+		return ;
 	temp1 = (*b)->next;
 	(*b)->next = NULL;
 	if (temp1 == NULL)
@@ -73,24 +75,21 @@ void	rb(t_stack **b, char *str)
 		temp2->next = *b;
 		*b = temp1;
 	}
-	if (ft_strncmp(str, "print", 5) == 0)
-		write(1, "rb\n", 3);
 }
-
 //checking last node
 //free before last node
 //set current node next to null to make it last node
-void	rrb(t_stack **b, char *str)
+void	silent_rrb(t_stack **b)
 {
 	t_stack	*temp1;
-	t_stack	*temp2;
+	t_stack *temp2;
 
-	if ((*b)->next == NULL)
+	if ((*b) == NULL)
 		return ;
 	temp1 = ft_lstlast(*b);
 	temp2 = gener_node(temp1->value);
 	temp1 = *b;
-	while (temp1->next != NULL)
+	while(temp1->next != NULL)
 	{	
 		if (temp1->next->next == NULL)
 		{
@@ -102,6 +101,4 @@ void	rrb(t_stack **b, char *str)
 	}
 	ft_lstadd_back(&temp2, *b);
 	*b = temp2;
-	if (ft_strncmp(str, "print", 5) == 0)
-		write(1, "rrb\n", 4);
 }

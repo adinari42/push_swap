@@ -1,0 +1,12 @@
+{
+	"files.associations": {
+		"__bit_reference": "c",
+		"algorithm": "c",
+		"random": "c",
+		"unistd.h": "c",
+		"ios": "cpp",
+		"istream": "cpp",
+		"ostream": "cpp",
+		"fstream": "cpp"
+	}
+}

@@ -6,7 +6,7 @@
 /*   By: adinari <adinari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 11:58:51 by adinari           #+#    #+#             */
-/*   Updated: 2022/07/31 12:05:07 by adinari          ###   ########.fr       */
+/*   Updated: 2022/08/08 20:16:15 by adinari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_stack	*sorted_list(t_stack *sort)
 	while (rem == 1)
 	{
 		rem = 0;
-		while (lst->next)
+		while (lst->next != NULL)
 		{
 			if (lst->value > lst->next->value)
 			{
@@ -61,22 +61,21 @@ void	lst_index(t_stack *lst, t_stack *sort)
 		lst = head_lst;
 		sort = sort->next;
 	}
+	sort = NULL;
 }
 
 t_stack	*lst_dup(t_stack *lst)
 {
-	int		j;
 	t_stack	*new;
 	t_stack	*head;
 
-	j = 0;
 	new = NULL;
 	head = lst;
+	tmp = lst;
 	while (lst)
 	{
 		push(&new, lst->value);
 		lst = lst->next;
-		j++;
 	}
 	lst = head;
 	return (new);
@@ -89,4 +88,15 @@ void	swap(int *a, int *b)
 	swp = *a;
 	*a = *b;
 	*b = swp;
+}
+
+void	order(t_stack **a)
+{
+	int	n;
+
+	n = total_indxcount(a);
+	if (n == 2)
+		order_2(a);
+	else
+		order_3(a);
 }

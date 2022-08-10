@@ -6,11 +6,11 @@
 /*   By: adinari <adinari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 14:39:25 by adinari           #+#    #+#             */
-/*   Updated: 2022/08/08 19:33:06 by adinari          ###   ########.fr       */
+/*   Updated: 2022/08/09 04:58:04 by adinari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 int	ft_strlen(const char *s)
 {
@@ -18,9 +18,7 @@ int	ft_strlen(const char *s)
 
 	i = 0;
 	while (s[i] != '\0')
-	{
 		i++;
-	}
 	return (i);
 }
 
@@ -41,7 +39,6 @@ char	*ft_strdup(const char *s1)
 	mem_dup[i] = '\0';
 	return (mem_dup);
 }
-
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char			*sub_str;
@@ -84,10 +81,16 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	return (len);
 }
 
-void	order_2(t_stack **a)
+int	total_indxcount(t_stack **a)
 {
-	if ((*a)->value > (*a)->next->value)
-		sa(a, "print");
-	else
-		return ;
+	int		j;
+
+	j = 1;
+	tmp = *a;
+	while (tmp->next != NULL)
+	{
+		j++;
+		tmp = tmp->next;
+	}
+	return (j);
 }

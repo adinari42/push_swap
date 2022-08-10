@@ -6,11 +6,11 @@
 /*   By: adinari <adinari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 23:13:17 by adinari           #+#    #+#             */
-/*   Updated: 2022/08/08 19:19:59 by adinari          ###   ########.fr       */
+/*   Updated: 2022/08/09 05:40:50 by adinari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 /*skips spaces using line 28 loop, considers '-' sign, increments i
 check individual char of str is number (ft_isdigit) 
 check ascii of characters and does -48 for conversion (- '0')
@@ -65,11 +65,17 @@ int	ft_isdigit(int c)
 		return (0);
 }
 
-void	rrr(t_stack **a, t_stack **b)
+void	silent_rrr(t_stack **a, t_stack **b)
 {
-	rra(a, "not print");
-	rrb(b, "not print");
-	write(1, "rrr\n", 4);
+	if ((*b) == NULL || (*b)->next == NULL)
+		silent_rra(a);
+	else if ((*a) == NULL || (*a)->next == NULL)
+		silent_rrb(b);
+	else
+	{
+		silent_rra(a);
+		silent_rrb(b);
+	}
 }
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)

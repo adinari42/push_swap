@@ -6,28 +6,15 @@
 /*   By: adinari <adinari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 17:28:27 by adinari           #+#    #+#             */
-/*   Updated: 2022/07/31 14:52:34 by adinari          ###   ########.fr       */
+/*   Updated: 2022/08/10 10:27:06 by adinari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-/*pop currently unused*/
-/*
-int	pop(t_stack *pop_stack)
-{
-	if (pop_stack == NULL)
-		return (0);
-	int	result = pop_stack->value;
-	t_stack *tmp = pop_stack; //change this for possible norm error
-	pop_stack = pop_stack->next;
-	free(tmp);
-	return (result);
-}*/
-/*prints current state of linked list*/
 
 void	printer(t_stack *ab)
 {
-	t_stack *aa;
+	t_stack	*aa;
 
 	aa = ab;
 	if (aa == NULL)
@@ -37,66 +24,52 @@ void	printer(t_stack *ab)
 	}
 	while (aa != NULL)
 	{
-		// printf("[value]->[%d][%d]  ", aa->value, aa->index);
-		//printf("[%d]~%d  ", aa->value, aa->index);
 		printf(" [%d]~%d ", aa->value, aa->index);
 		aa = aa->next;
 	}
 	printf("\n");
 }
 
+void	push_swap(t_stack *a, t_stack *b)
+{
+	t_stack	*sorted_l;
+
+	sorted_l = sorted_list(a);
+	lst_index(a, sorted_l);
+	free_ll(sorted_l);
+	push_chunk(&a, &b);
+	order(&a);
+	push_back(&a, &b);
+	// printer(a);
+	free_ll(a);
+}
+
 int	main(int argc, char **argv)
 {
-	t_stack *a;
-	t_stack *b;
+	t_stack	*a;
+	t_stack	*b;
+	int		i;
 
-	a = NULL;
 	b = NULL;
-	int	i;
-	int p;
-
 	i = 1;
-	p = 0;
-
-	if (2 > argc)
+	if (3 > argc)
 		return (0);
 	while (i < argc)
 	{
-		if (fill_ll(*(argv + i), &a)) {
-			write(1, "Error", 5);
-			return 1;
-		}
-	 	i++;
+		if (fill_ll(*(argv + i), &a))
+			return (write(2, "Error", 5));
+		i++;
 	}
-	int h = total_indxcount(&a);
-	// printf("A-> ");
-	// printer(a);
-	// printf("B-> ");
-	// printer(b);
+	if (argc == 3)
+	{
+		order_2(&a);
+		return (0);
+	}
 	if (dup_check(&a))
-		return (1);	
+		return (1);
 	if (sort_check(&a))
 		return (1);
-
-	lst_index(a, sorted_list(a));
-	push_chunk(&a, &b);
-	
-	// printf("\n-------------post push chunks----------------\n\nA-> ");
-	// printer(a);
-	// printf("B-> ");
-	// printer(b);
-	
-	order_3(&a);
-
-	// printf("\n-------------post order 3---------------\n\nA-> ");
-	// printer(a);
-	// printf("B-> ");
-	// printer(b);
-	
-	push_back(&a, &b);
-
-	// printf("\n-------------final result----------------\n\nA-> ");
-	// printer(a);
-	// printf("B-> ");
-	// printer(b);
+	push_swap(a, b);
+	// system("leaks push_swap");
+	return (0);
 }
