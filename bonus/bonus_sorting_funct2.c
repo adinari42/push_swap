@@ -6,7 +6,7 @@
 /*   By: adinari <adinari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 12:12:20 by adinari           #+#    #+#             */
-/*   Updated: 2022/08/10 04:19:19 by adinari          ###   ########.fr       */
+/*   Updated: 2022/08/13 00:41:22 by adinari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,27 +17,28 @@
 //temp becomes top of a by addressing next to a
 //a takes shape/structure of temp llist
 */
-void	silent_pa(t_stack **b, t_stack **a)
+int	silent_pa(t_stack **b, t_stack **a)
 {
 	t_stack	*temp;
 
+	if ((*b) == NULL)
+		return (0);
 	temp = *b;
 	*b = (*b)->next;
 	temp->next = *a;
 	*a = temp;
+	return (0);
 }
 
-void	silent_sa(t_stack **a)
+int	silent_sa(t_stack **a)
 {
 	t_stack	*temp1;
-	t_stack *temp2;
-
+	t_stack	*temp2;
 
 	if ((*a) == NULL)
-		return ;
-	printf("entered sa");
+		return (0);
 	if (total_indxcount(a) < 2)
-		return ;
+		return (0);
 	temp1 = *a;
 	*a = (*a)->next;
 	temp2 = *a;
@@ -45,17 +46,16 @@ void	silent_sa(t_stack **a)
 	temp1->next = *a;
 	temp2->next = temp1;
 	*a = temp2;
-	printf("end of sa");
+	return (0);
 }
 
-void	silent_ra(t_stack **a)
+int	silent_ra(t_stack **a)
 {
 	t_stack	*temp;
-	t_stack *temp2;
-
+	t_stack	*temp2;
 
 	if ((*a) == NULL)
-		return ;
+		return (0);
 	temp = (*a)->next;
 	(*a)->next = NULL;
 	if (temp == NULL)
@@ -68,21 +68,23 @@ void	silent_ra(t_stack **a)
 		temp2->next = *a;
 		*a = temp;
 	}
+	return (0);
 }
+
 //checking for the end
 //free last node
 //set next to null to make current node as last node
-void	silent_rra(t_stack **a)
+int	silent_rra(t_stack **a)
 {
 	t_stack	*temp1;
-	t_stack *temp2;
+	t_stack	*temp2;
 
 	if ((*a) == NULL)
-		return ;
+		return (0);
 	temp1 = ft_lstlast(*a);
 	temp2 = gener_node(temp1->value);
 	temp1 = *a;
-	while(temp1->next != NULL)
+	while (temp1->next != NULL)
 	{	
 		if (temp1->next->next == NULL)
 		{
@@ -94,9 +96,10 @@ void	silent_rra(t_stack **a)
 	}
 	ft_lstadd_back(&temp2, *a);
 	*a = temp2;
+	return (0);
 }
 
-void	silent_rr(t_stack **a, t_stack **b)
+int	silent_rr(t_stack **a, t_stack **b)
 {
 	if ((*b) == NULL || (*b)->next == NULL)
 		silent_ra(a);
@@ -107,4 +110,5 @@ void	silent_rr(t_stack **a, t_stack **b)
 		silent_ra(a);
 		silent_rb(b);
 	}
+	return (0);
 }

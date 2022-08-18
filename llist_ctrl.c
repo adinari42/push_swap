@@ -6,7 +6,7 @@
 /*   By: adinari <adinari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 12:23:04 by adinari           #+#    #+#             */
-/*   Updated: 2022/08/08 18:51:03 by adinari          ###   ########.fr       */
+/*   Updated: 2022/08/15 21:43:41 by adinari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	push(t_stack **thestack, int thevalue)
 	newnode = malloc(sizeof(t_stack));
 	if (newnode == NULL)
 	{
-		write(1, "Error\n", 6);
+		write(2, "Error\n", 6);
 		free(newnode);
 		return (0);
 	}

@@ -6,7 +6,7 @@
 /*   By: adinari <adinari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 09:59:30 by adinari           #+#    #+#             */
-/*   Updated: 2022/08/10 04:18:09 by adinari          ###   ########.fr       */
+/*   Updated: 2022/08/13 00:41:43 by adinari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,26 @@
 //temp becomes top of b by addressing next to b
 //b takes shape/structure of temp llist
 */
-void	silent_pb(t_stack **a, t_stack **b)
+int	silent_pb(t_stack **a, t_stack **b)
 {
 	t_stack	*temp;
 
+	if ((*a) == NULL)
+		return (0);
 	temp = *a;
 	*a = (*a)->next;
 	temp->next = *b;
 	*b = temp;
+	return (0);
 }
 
-void	silent_sb(t_stack **b)
+int	silent_sb(t_stack **b)
 {
 	t_stack	*temp1;
-	t_stack *temp2;
+	t_stack	*temp2;
 
 	if ((*b) == NULL)
-		return ;
+		return (0);
 	temp1 = *b;
 	*b = (*b)->next;
 	temp2 = *b;
@@ -41,9 +44,10 @@ void	silent_sb(t_stack **b)
 	temp1->next = *b;
 	temp2->next = temp1;
 	*b = temp2;
+	return (0);
 }
 
-void	silent_ss(t_stack **a, t_stack **b)
+int	silent_ss(t_stack **a, t_stack **b)
 {
 	if ((*b) == NULL || (*b)->next == NULL)
 		silent_sa(a);
@@ -54,15 +58,16 @@ void	silent_ss(t_stack **a, t_stack **b)
 		silent_sa(a);
 		silent_sb(b);
 	}
+	return (0);
 }
 
-void	silent_rb(t_stack **b)
+int	silent_rb(t_stack **b)
 {
 	t_stack	*temp1;
-	t_stack *temp2;
+	t_stack	*temp2;
 
 	if ((*b) == NULL)
-		return ;
+		return (0);
 	temp1 = (*b)->next;
 	(*b)->next = NULL;
 	if (temp1 == NULL)
@@ -75,21 +80,23 @@ void	silent_rb(t_stack **b)
 		temp2->next = *b;
 		*b = temp1;
 	}
+	return (0);
 }
+
 //checking last node
 //free before last node
 //set current node next to null to make it last node
-void	silent_rrb(t_stack **b)
+int	silent_rrb(t_stack **b)
 {
 	t_stack	*temp1;
-	t_stack *temp2;
+	t_stack	*temp2;
 
 	if ((*b) == NULL)
-		return ;
+		return (0);
 	temp1 = ft_lstlast(*b);
 	temp2 = gener_node(temp1->value);
 	temp1 = *b;
-	while(temp1->next != NULL)
+	while (temp1->next != NULL)
 	{	
 		if (temp1->next->next == NULL)
 		{
@@ -101,4 +108,5 @@ void	silent_rrb(t_stack **b)
 	}
 	ft_lstadd_back(&temp2, *b);
 	*b = temp2;
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: adinari <adinari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 13:45:41 by adinari           #+#    #+#             */
-/*   Updated: 2022/08/08 19:19:50 by adinari          ###   ########.fr       */
+/*   Updated: 2022/08/17 04:45:00 by adinari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int	sort_check(t_stack **a)
 void	free_ll(t_stack *stack)
 {
 	t_stack	*tmp1;
+	t_stack	*tmp;
 
 	tmp = stack;
 	tmp1 = NULL;
@@ -78,13 +79,16 @@ int	ft_lstsize(t_stack *lst)
 	return (i);
 }
 
+//splits each argument if it has multiple numbers
+//parses each number with atoi and converts it to int
+//push number to stack a
 int	fill_ll(char *argv, t_stack **a)
 {
 	int		j;
 	char	**split_int;
 	int		error;
 	long	n;
-	int		k;
+	t_stack	*tmp;
 
 	j = 0;
 	split_int = ft_split(argv, 32);
@@ -101,7 +105,6 @@ int	fill_ll(char *argv, t_stack **a)
 	tmp = ft_lstlast(*a);
 	free(tmp->next);
 	tmp->next = NULL;
-	k = 0;
 	free_all(split_int, j);
 	return (0);
 }

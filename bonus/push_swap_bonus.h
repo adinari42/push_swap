@@ -6,7 +6,7 @@
 /*   By: adinari <adinari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 21:01:20 by adinari           #+#    #+#             */
-/*   Updated: 2022/08/10 06:19:31 by adinari          ###   ########.fr       */
+/*   Updated: 2022/08/14 23:50:58 by adinari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,16 @@
 
 typedef struct s_stack
 {
-	int 			value;
-	struct s_stack 	*next;
-	int				index;
-} 				t_stack;
-
-t_stack *tmp;
+	int					value;
+	struct s_stack		*next;
+	int					index;
+}	t_stack;
 
 /*check_functions*/
 int		minmax_intcheck(const char *str, int *sign, long *result);
 int		ft_atoi(char *str, long *result);
 int		ft_isdigit(int c);
-void	silent_rrr(t_stack **a, t_stack **b);
+int		silent_rrr(t_stack **a, t_stack **b);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 /*dupsort_check*/
 int		fill_ll(char *argv, t_stack **a);
@@ -43,22 +41,18 @@ void	free_ll(t_stack *stack);
 int		ft_lstsize(t_stack *lst);
 /*checker.c*/
 char	*gener_line(char *buffer);
-int		check_buffer(t_stack *a, t_stack *b);
-int		phase1_check(t_stack **a, t_stack **b, char *buffer);
-int		phase2_check(t_stack **a, t_stack **b, char *buffer);
-int		phase_setup(t_stack **a, t_stack **b, char *buffer);
 /*sorting_funct.c*/
-void	silent_pb(t_stack **a, t_stack **b);
-void	silent_sb(t_stack **b);
-void	silent_ss(t_stack **a, t_stack **b);
-void	silent_rb(t_stack **b);
-void	silent_rrb(t_stack **b);
+int		silent_pb(t_stack **a, t_stack **b);
+int		silent_sb(t_stack **b);
+int		silent_ss(t_stack **a, t_stack **b);
+int		silent_rb(t_stack **b);
+int		silent_rrb(t_stack **b);
 /*sorting_funct2.c*/
-void	silent_pa(t_stack **b, t_stack **a);
-void	silent_sa(t_stack **a);
-void	silent_ra(t_stack **a);
-void	silent_rra(t_stack **a);
-void	silent_rr(t_stack **a, t_stack **b);
+int		silent_pa(t_stack **b, t_stack **a);
+int		silent_sa(t_stack **a);
+int		silent_ra(t_stack **a);
+int		silent_rra(t_stack **a);
+int		silent_rr(t_stack **a, t_stack **b);
 /*split.c*/
 char	**ft_split(char const *s, char c);
 void	free_all(char **words, int n);

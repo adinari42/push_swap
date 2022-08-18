@@ -6,12 +6,12 @@
 /*   By: adinari <adinari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 09:45:11 by adinari           #+#    #+#             */
-/*   Updated: 2022/08/10 10:25:11 by adinari          ###   ########.fr       */
+/*   Updated: 2022/08/14 23:45:40 by adinari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
-#define PUSH_SWAP_H
+# define PUSH_SWAP_H
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -20,12 +20,10 @@
 
 typedef struct s_stack
 {
-	int 			value;
-	struct s_stack 	*next;
+	int				value;
+	struct s_stack	*next;
 	int				index;
-} 				t_stack;
-
-t_stack *tmp;
+}					t_stack;
 
 /*check_functions.c*/
 int		minmax_intcheck(const char *str, int *sign, long *result);
@@ -40,7 +38,7 @@ void	free_ll(t_stack *stack);
 int		ft_lstsize(t_stack *lst);
 int		fill_ll(char *argv, t_stack **a);
 /*ll_ctrl*/
-int	push(t_stack **thestack, int thevalue);
+int		push(t_stack **thestack, int thevalue);
 t_stack	*gener_node(int thevalue);
 t_stack	*ft_lstlast(t_stack *lst);
 /*extra.c*/
@@ -64,14 +62,14 @@ void	ft_lstadd_front(t_stack **lst, t_stack *new);
 /*push_back_forth.c*/
 void	push_back(t_stack **a, t_stack **b);
 int		update_rotation(t_stack **b);
-void 	rotate1(t_stack **a, t_stack **b);
+void	rotate1(t_stack **a, t_stack **b);
 void	push_chunk(t_stack **a, t_stack **b);
 /*push_chunk_utils.c*/
 void	pushrotate(t_stack **a, t_stack **b);
 void	rotate_direction(t_stack **a, int chunk_border);
 int		first_occurance(t_stack **a, int chunk_border);
 int		last_occurance(t_stack **a, int chunk_border);
-void	handle_pushrotate(t_stack **a, t_stack **b, int chunk_size, int chunk_border);
+void	handle_pushrotate(t_stack **a, t_stack **b, int chunk_s, int chunk_b);
 /*pushswap.c*/
 void	push_swap(t_stack *a, t_stack *b);
 /*sorted_list.c*/
@@ -79,7 +77,7 @@ t_stack	*sorted_list(t_stack *sort);
 void	lst_index(t_stack *lst, t_stack *sort);
 t_stack	*lst_dup(t_stack *lst);
 void	swap(int *a, int *b);
-void 	order(t_stack **a);
+void	order(t_stack **a);
 /*sorting_funct.c*/
 void	pb(t_stack **a, t_stack **b);
 void	sb(t_stack **b, char *str);

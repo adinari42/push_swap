@@ -6,7 +6,7 @@
 /*   By: adinari <adinari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 09:59:30 by adinari           #+#    #+#             */
-/*   Updated: 2022/08/10 04:20:32 by adinari          ###   ########.fr       */
+/*   Updated: 2022/08/13 20:27:15 by adinari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,10 @@ void	ss(t_stack **a, t_stack **b)
 	else if (total_indxcount(a) < 2)
 		sb(b, "not print");
 	else
+	{
 		sa(a, "not print");
 		sb(b, "not print");
+	}
 	write(1, "ss\n", 3);
 }
 

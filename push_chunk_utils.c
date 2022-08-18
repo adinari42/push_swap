@@ -6,7 +6,7 @@
 /*   By: adinari <adinari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 11:37:07 by adinari           #+#    #+#             */
-/*   Updated: 2022/08/10 10:53:03 by adinari          ###   ########.fr       */
+/*   Updated: 2022/08/14 23:54:06 by adinari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,9 @@ void	rotate_direction(t_stack **a, int chunk_border)
 
 int	first_occurance(t_stack **a, int chunk_border)
 {
-	int	first;
-	int	i;
+	int		first;
+	int		i;
+	t_stack	*tmp;
 
 	tmp = *a;
 	i = 0;
@@ -82,8 +83,9 @@ int	first_occurance(t_stack **a, int chunk_border)
 
 int	last_occurance(t_stack **a, int chunk_border)
 {
-	int	last;
-	int	i;
+	int		last;
+	int		i;
+	t_stack	*tmp;
 
 	tmp = *a;
 	i = total_indxcount(a);

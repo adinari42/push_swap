@@ -6,7 +6,7 @@
 /*   By: adinari <adinari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 11:48:01 by adinari           #+#    #+#             */
-/*   Updated: 2022/08/10 10:53:31 by adinari          ###   ########.fr       */
+/*   Updated: 2022/08/14 23:53:47 by adinari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,10 @@ void	rotate1(t_stack **a, t_stack **b)
 
 int	update_rotation(t_stack **b)
 {
-	int	i;
-	int	rotation;
-	int	n;
+	int		i;
+	int		rotation;
+	int		n;
+	t_stack	*tmp;
 
 	rotation = 0;
 	i = 1;

@@ -6,12 +6,14 @@
 /*   By: adinari <adinari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 11:58:51 by adinari           #+#    #+#             */
-/*   Updated: 2022/08/08 20:16:15 by adinari          ###   ########.fr       */
+/*   Updated: 2022/08/13 20:12:26 by adinari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+//lst_dup duplicates the given stack, 
+//sorted_list sorts the duplicated list
 t_stack	*sorted_list(t_stack *sort)
 {
 	t_stack	*lst;
@@ -71,7 +73,6 @@ t_stack	*lst_dup(t_stack *lst)
 
 	new = NULL;
 	head = lst;
-	tmp = lst;
 	while (lst)
 	{
 		push(&new, lst->value);

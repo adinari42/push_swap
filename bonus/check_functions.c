@@ -6,7 +6,7 @@
 /*   By: adinari <adinari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 23:13:17 by adinari           #+#    #+#             */
-/*   Updated: 2022/08/09 05:40:50 by adinari          ###   ########.fr       */
+/*   Updated: 2022/08/11 17:56:58 by adinari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	ft_isdigit(int c)
 		return (0);
 }
 
-void	silent_rrr(t_stack **a, t_stack **b)
+int	silent_rrr(t_stack **a, t_stack **b)
 {
 	if ((*b) == NULL || (*b)->next == NULL)
 		silent_rra(a);
@@ -76,6 +76,7 @@ void	silent_rrr(t_stack **a, t_stack **b)
 		silent_rra(a);
 		silent_rrb(b);
 	}
+	return (0);
 }
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)

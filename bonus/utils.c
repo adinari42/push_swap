@@ -6,7 +6,7 @@
 /*   By: adinari <adinari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 14:39:25 by adinari           #+#    #+#             */
-/*   Updated: 2022/08/09 04:58:04 by adinari          ###   ########.fr       */
+/*   Updated: 2022/08/14 23:50:45 by adinari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ char	*ft_strdup(const char *s1)
 	mem_dup[i] = '\0';
 	return (mem_dup);
 }
+
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char			*sub_str;
@@ -84,6 +85,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 int	total_indxcount(t_stack **a)
 {
 	int		j;
+	t_stack	*tmp;
 
 	j = 1;
 	tmp = *a;

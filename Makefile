@@ -6,7 +6,7 @@
 #    By: adinari <adinari@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/30 01:20:12 by adinari           #+#    #+#              #
-#    Updated: 2022/08/10 06:49:34 by adinari          ###   ########.fr        #
+#    Updated: 2022/08/10 16:31:23 by adinari          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,7 @@ $(NAME): $(OBJECTS)
 bonus: $(NAME_BONUS)
 
 $(NAME_BONUS): $(OBJ_BONUS)
-		$(CC) $(FLAGS) -fsanitize=address $(OBJ_BONUS) -o $(NAME_BONUS)
+		$(CC) $(FLAGS) $(OBJ_BONUS) -o $(NAME_BONUS)
 
 clean:
 	rm -rf *.o

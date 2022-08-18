@@ -6,7 +6,7 @@
 /*   By: adinari <adinari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 13:45:41 by adinari           #+#    #+#             */
-/*   Updated: 2022/08/10 04:30:47 by adinari          ###   ########.fr       */
+/*   Updated: 2022/08/14 23:53:26 by adinari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,20 +43,17 @@ int	sort_check(t_stack **a)
 	while (tmp->next != NULL)
 	{
 		if (tmp->value > tmp1->value)
-		{
-			// free_ll(*a);
 			return (0);
-		}
 		tmp = tmp->next;
 		tmp1 = tmp->next;
 	}
-	// free_ll(*a);
 	return (1);
 }
 
 void	free_ll(t_stack *stack)
 {
 	t_stack	*tmp1;
+	t_stack	*tmp;
 
 	tmp = stack;
 	tmp1 = NULL;
@@ -88,7 +85,7 @@ int	fill_ll(char *argv, t_stack **a)
 	char	**split_int;
 	int		error;
 	long	n;
-	int		k;
+	t_stack	*tmp;
 
 	j = 0;
 	split_int = ft_split(argv, 32);
@@ -105,8 +102,6 @@ int	fill_ll(char *argv, t_stack **a)
 	tmp = ft_lstlast(*a);
 	free(tmp->next);
 	tmp->next = NULL;
-	k = 0;
 	free_all(split_int, j);
 	return (0);
 }
-
